@@ -26,13 +26,11 @@ require.config({
 
 require([
     'backbone',
-    'module/router'
-], function (Backbone, Router) {
+    'module/childview',
+    'module/model'
+], function (Backbone, View, Model) {
 
-    // register router
-    var router = new Router();
-
-    // start app browser history
-    Backbone.history.start();
+    var model = new Model();
+    var view  = new View({model:model});
 
 });

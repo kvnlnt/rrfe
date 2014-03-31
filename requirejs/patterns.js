@@ -25,14 +25,19 @@ require.config({
 });
 
 require([
+
     'backbone',
-    'module/router'
-], function (Backbone, Router) {
+    'module/view',
+    'module/view.listener',
+    'module/model'
 
-    // register router
-    var router = new Router();
+], function (Backbone, View, Listener, Model) {
 
-    // start app browser history
-    Backbone.history.start();
+    // register global pubSub obj
+    Backbone.pubSub = _.extend({}, Backbone.Events);
+
+    var model    = new Model();
+    var view     = new View({model:model});
+    var listener = new Listener();
 
 });
